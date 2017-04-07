@@ -17,7 +17,7 @@ Algorithm::~Algorithm()
 }
 
 
-bool Algorithm::initialData() 
+bool Algorithm::initData() 
 {
 	cout << "Podaj liczbe zadan\n";
 	numberOfJobs = getAndValidateData();
@@ -28,7 +28,7 @@ bool Algorithm::initialData()
 	for (int i = 1; i <= numberOfJobs; i++)
 	{
 		Job p(i,numberOfMachines);
-		p.initialData();
+		p.initData();
 		jobs.push_back(p);
 	}
 
@@ -49,7 +49,7 @@ int Algorithm::getAndValidateData()
 
 
 
-bool Algorithm::initialData(const std::string fileName)
+bool Algorithm::initData(const std::string fileName)
 {
 	std::fstream file;
 	file.open(fileName, std::ios::in);
@@ -60,7 +60,7 @@ bool Algorithm::initialData(const std::string fileName)
 		for (int i = 1; i <= numberOfJobs; i++)
 		{
 			Job p(i, numberOfMachines);
-			p.initialData(file);
+			p.initData(file);
 			jobs.push_back(p);
 		}
 	}

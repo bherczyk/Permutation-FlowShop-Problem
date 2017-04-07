@@ -17,8 +17,8 @@ public:
 	Job(int jobNumber, int numberOfMachines);
 	~Job();
 
-	bool initialData();
-	bool initialData(std::fstream &file);
+	bool initData();
+	bool initData(std::fstream &file);
 
 	void showData() const;
 	

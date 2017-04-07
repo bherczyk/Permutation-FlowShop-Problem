@@ -15,7 +15,7 @@ Job::~Job()
 {
 }
 
-bool Job::initialData()
+bool Job::initData()
 {
 	cout << "Zadanie numer: " << jobNumber << "\n";
 	for (int i = 1; i <= numberOfMachines; i++)
@@ -27,7 +27,7 @@ bool Job::initialData()
 	return true;
 }
 
-bool Job::initialData(std::fstream& file)
+bool Job::initData(std::fstream& file)
 {
 	for (int i = 1; i <= numberOfMachines; i++)
 	{

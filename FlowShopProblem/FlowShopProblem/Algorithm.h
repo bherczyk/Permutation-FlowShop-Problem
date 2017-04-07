@@ -16,14 +16,17 @@ protected:
 	int makespan;
 	std::list<Job> resultSchedule;
 
+	void computeMakespan();
 public:
 	Algorithm();
 	~Algorithm();
 
-	bool initialData();
-	bool initialData(const std::string fileName);
+	bool initData();
+	bool initData(const std::string fileName);
 
 	void showData() const;
 	void showResult() const;
+
+	
 };
 
