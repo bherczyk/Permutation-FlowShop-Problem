@@ -60,3 +60,13 @@ void Job::showData() const
 	}
 	cout << "\n";
 }
+
+int Job::getTimeJob(int machineNumber) const
+{
+	return jobTimeOnMachines.at(machineNumber-1);
+}
+
+int Job::getJobNumber() const
+{
+	return jobNumber;
+}

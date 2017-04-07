@@ -16,7 +16,8 @@ protected:
 	int makespan;
 	std::list<Job> resultSchedule;
 
-	void computeMakespan();
+	void computeMakespan(const int jobsInResultSchedule);
+	int max(int first, int second);
 public:
 	Algorithm();
 	~Algorithm();
@@ -26,6 +27,8 @@ public:
 
 	void showData() const;
 	void showResult() const;
+
+	void tests();
 
 	
 };

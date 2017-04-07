@@ -6,8 +6,10 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	Algorithm a;
-	a.initialData("../../Taillard/T20_5/t20_5.1.txt");
+	a.initData();
 	a.showData();
+	a.tests();
+	a.showResult();
 	std::cin.clear();
 	std::cin.ignore();
 	int b;

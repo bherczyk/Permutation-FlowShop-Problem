@@ -84,4 +84,53 @@ void Algorithm::showData() const
 	}
 }
 
+void Algorithm::showResult() const
+{
+	cout << "\nCmax = " << makespan;
+	cout << "\nKolejnosc = ";
+	for (auto it = resultSchedule.begin(); it != resultSchedule.end(); it++)
+	{
+		cout << it->getJobNumber() << " , ";
+	}
 
+}
+
+
+void Algorithm::computeMakespan(const int numberOfJobsInResultSchedule)
+{
+	int numberOfJobsInCompleteTaskTime = numberOfJobsInResultSchedule + 1; 
+	int numberOfMachinesInCompleteTaskTime = numberOfMachines + 1;
+	std::vector<std::vector<int>> completeTaskTime(numberOfJobsInCompleteTaskTime, std::vector<int>(numberOfMachinesInCompleteTaskTime));
+
+	for (int i = 0; i < numberOfJobsInCompleteTaskTime; i++)
+	{
+		for (int j = 0; j < numberOfMachinesInCompleteTaskTime; j++)
+		{
+			if (i == 0 || j == 0)
+			{
+				completeTaskTime[i][j] = 0;
+			}
+			else
+			{
+				int greaterTaskTime = max(completeTaskTime[i - 1][j], completeTaskTime[i][j-1]);
+				completeTaskTime[i][j] = greaterTaskTime + jobs[i-1].getTimeJob(j);
+			}
+		}
+	}
+	makespan = completeTaskTime[numberOfJobsInCompleteTaskTime-1][numberOfMachinesInCompleteTaskTime-1];
+}
+
+int Algorithm::max(int first, int second)
+{
+	return first > second ? first : second;
+}
+
+void Algorithm::tests()
+{
+	for (auto it = jobs.begin(); it != jobs.end(); it++)
+	{
+		resultSchedule.push_back(*it);
+	}
+
+	computeMakespan(numberOfJobs);
+}

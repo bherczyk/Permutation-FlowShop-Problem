@@ -21,6 +21,9 @@ public:
 	bool initData(std::fstream &file);
 
 	void showData() const;
+
+	int getTimeJob(int machineNumber) const;
+	int getJobNumber() const;
 	
 };
 
