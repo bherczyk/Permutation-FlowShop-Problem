@@ -8,10 +8,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	using namespace std;
 
 	NEH a;
-	a.initData();
+	a.initData("../../Taillard/T100_20/T100_20.1.txt");
+	a.showData();
 	a.computeResult();
 	a.showResult();
-	//a.computeResult();
+
 	std::cin.clear();
 	std::cin.ignore();
 	int b;

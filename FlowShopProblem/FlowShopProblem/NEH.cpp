@@ -13,14 +13,12 @@ NEH::~NEH()
 
 void NEH::computeResult()
 {
+	std::priority_queue<Job> sortedJobs;
 	std::vector<Job> tmpResultSchedule;
-	
-	copyJobsToSortedJobs();
+	copyJobsToSortedJobs(sortedJobs);
 	int numberOfJobsInResult = 0;
-
 	while (!sortedJobs.empty())
 	{
-		int tmpMakespan = INT_MAX;
 		if (numberOfJobsInResult == 0)
 		{
 			Job job = sortedJobs.top();
@@ -31,32 +29,40 @@ void NEH::computeResult()
 		numberOfJobsInResult++;
 		Job job = sortedJobs.top();
 		sortedJobs.pop();
-		
-		auto it = resultSchedule.begin();
-		for (int i = 0; i < numberOfJobsInResult; i++)
-		{	
-			it = resultSchedule.insert(it + i, job);
-			computeMakespan(numberOfJobsInResult);
-			if (tmpMakespan > makespan)
-			{
-				tmpResultSchedule.clear();
-				tmpResultSchedule = resultSchedule;
-				tmpMakespan = makespan;
-			}
-			resultSchedule.erase(it);
-			it = resultSchedule.begin();
-		}
-		resultSchedule.clear();
-		resultSchedule = tmpResultSchedule;
+		findNewSchedule(numberOfJobsInResult, job, tmpResultSchedule);
 	}
-	computeMakespan(numberOfJobsInResult);
-	
 }
 
-void NEH::copyJobsToSortedJobs()
+void NEH::copyJobsToSortedJobs(std::priority_queue<Job> &sortedJobs)
 {
 	for (auto it = jobs.begin(); it != jobs.end(); it++)
 	{
 		sortedJobs.push(*it);
+	}
+}
+
+void NEH::findNewSchedule(int &numberOfJobsInResult, Job &job, std::vector<Job> &tmpResultSchedule)
+{
+	int tmpMakespan = INT_MAX;
+	auto it = resultSchedule.begin();
+	for (int i = 0; i < numberOfJobsInResult; i++)
+	{
+		it = resultSchedule.insert(it + i, job);
+		computeMakespan(numberOfJobsInResult);
+		checkNewMakespan(tmpMakespan, tmpResultSchedule);
+		resultSchedule.erase(it);
+		it = resultSchedule.begin();
+	}
+	resultSchedule.clear();
+	resultSchedule = tmpResultSchedule;
+}
+
+void NEH::checkNewMakespan(int &tmpMakespan, std::vector<Job> &tmpResultSchedule)
+{
+	if (tmpMakespan > makespan)
+	{
+		tmpResultSchedule.clear();
+		tmpResultSchedule = resultSchedule;
+		tmpMakespan = makespan;
 	}
 }
