@@ -2,14 +2,16 @@
 
 #include "stdafx.h"
 #include "Algorithm.h"
-
+#include "NEH.h"
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Algorithm a;
+	using namespace std;
+
+	NEH a;
 	a.initData();
-	a.showData();
-	a.tests();
+	a.computeResult();
 	a.showResult();
+	//a.computeResult();
 	std::cin.clear();
 	std::cin.ignore();
 	int b;

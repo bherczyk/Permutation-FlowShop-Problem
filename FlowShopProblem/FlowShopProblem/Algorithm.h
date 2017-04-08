@@ -8,19 +8,21 @@ class Algorithm
 {
 private:
 	int getAndValidateData();
+	int max(const int first, const int second);
 
 protected:
 	int numberOfMachines;
 	int numberOfJobs;
 	std::vector<Job> jobs;
 	int makespan;
-	std::list<Job> resultSchedule;
+	std::vector<Job> resultSchedule;
 
 	void computeMakespan(const int jobsInResultSchedule);
-	int max(int first, int second);
+	
+
 public:
-	Algorithm();
-	~Algorithm();
+	explicit Algorithm();
+	virtual ~Algorithm();
 
 	bool initData();
 	bool initData(const std::string fileName);
@@ -28,8 +30,7 @@ public:
 	void showData() const;
 	void showResult() const;
 
-	void tests();
+	virtual void computeResult() = 0;
 
-	
 };
 

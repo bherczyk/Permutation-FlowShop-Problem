@@ -4,10 +4,11 @@
 using std::cin;
 using std::cout;
 
-Job::Job(int jobNumber, int numberOfMachines)
+Job::Job(const int jobNumber, const int numberOfMachines)
 {
 	this->jobNumber = jobNumber;
 	this->numberOfMachines = numberOfMachines;
+	addedJobTimes = 0;
 }
 
 
@@ -24,6 +25,7 @@ bool Job::initData()
 		int time = getAndValidateData();
 		jobTimeOnMachines.push_back(time);
 	}
+	addJobTime();
 	return true;
 }
 
@@ -35,6 +37,7 @@ bool Job::initData(std::fstream& file)
 		file >> time;
 		jobTimeOnMachines.push_back(time);
 	}
+	addJobTime();
 	return true;
 }
 
@@ -61,7 +64,7 @@ void Job::showData() const
 	cout << "\n";
 }
 
-int Job::getTimeJob(int machineNumber) const
+int Job::getTimeJob(const int machineNumber) const
 {
 	return jobTimeOnMachines.at(machineNumber);
 }
@@ -69,4 +72,19 @@ int Job::getTimeJob(int machineNumber) const
 int Job::getJobNumber() const
 {
 	return jobNumber;
+}
+
+void Job::addJobTime()
+{
+	int sum = 0;
+	for (auto it = jobTimeOnMachines.begin(); it != jobTimeOnMachines.end(); it++)
+	{
+		sum += *it;
+	}
+	addedJobTimes = sum;
+}
+
+bool Job::operator < (const Job& other) const
+{
+	return addedJobTimes < other.addedJobTimes;
 }

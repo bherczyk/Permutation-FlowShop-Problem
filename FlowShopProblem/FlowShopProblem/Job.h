@@ -9,12 +9,13 @@ private:
 	int jobNumber;
 	int numberOfMachines;
 	std::vector<int> jobTimeOnMachines;
-
+	int addedJobTimes;
 
 	int getAndValidateData();
+	void addJobTime();
 
 public:
-	Job(int jobNumber, int numberOfMachines);
+	explicit Job(const int jobNumber, const int numberOfMachines);
 	~Job();
 
 	bool initData();
@@ -22,8 +23,10 @@ public:
 
 	void showData() const;
 
-	int getTimeJob(int machineNumber) const;
+	int getTimeJob(const int machineNumber) const;
 	int getJobNumber() const;
+
+	bool operator < (const Job& other) const;
 	
 };
 
