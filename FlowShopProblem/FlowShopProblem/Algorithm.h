@@ -8,7 +8,7 @@ class Algorithm
 {
 private:
 	int getAndValidateData();
-	int max(const int first, const int second);
+	
 
 protected:
 	int numberOfMachines;
@@ -17,8 +17,8 @@ protected:
 	int makespan;
 	std::vector<Job> resultSchedule;
 
-	void computeMakespan(const int jobsInResultSchedule);
-	
+	int computeMakespan(const int jobsInResultSchedule);
+	int max(const int first, const int second);
 
 public:
 	explicit Algorithm();

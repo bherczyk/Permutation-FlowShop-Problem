@@ -13,9 +13,13 @@ private:
 	void findNewSchedule(int &numberOfJobsInResult, Job &job, std::vector<Job> &tmpResultSchedule);
 
 public:
-	NEH();
+	explicit NEH();
+	NEH(const Algorithm* a);
 	~NEH();
 
 	virtual void computeResult();
+
+	int getMakespan() const;
+	std::vector<Job> getResultSchedule() const;
 };
 

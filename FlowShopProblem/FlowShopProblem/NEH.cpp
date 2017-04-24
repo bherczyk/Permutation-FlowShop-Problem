@@ -11,6 +11,14 @@ NEH::~NEH()
 {
 }
 
+
+NEH::NEH(const Algorithm* a)
+{
+	NEH *other = (NEH*)a;
+	this->numberOfJobs = other->numberOfJobs;
+	this->numberOfMachines = other->numberOfMachines;
+	this->jobs = other->jobs;
+}
 void NEH::computeResult()
 {
 	std::priority_queue<Job> sortedJobs;
@@ -31,6 +39,7 @@ void NEH::computeResult()
 		sortedJobs.pop();
 		findNewSchedule(numberOfJobsInResult, job, tmpResultSchedule);
 	}
+	makespan = computeMakespan(numberOfJobs);
 }
 
 void NEH::copyJobsToSortedJobs(std::priority_queue<Job> &sortedJobs)
@@ -48,7 +57,7 @@ void NEH::findNewSchedule(int &numberOfJobsInResult, Job &job, std::vector<Job> 
 	for (int i = 0; i < numberOfJobsInResult; i++)
 	{
 		it = resultSchedule.insert(it + i, job);
-		computeMakespan(numberOfJobsInResult);
+		makespan = computeMakespan(numberOfJobsInResult);
 		checkNewMakespan(tmpMakespan, tmpResultSchedule);
 		resultSchedule.erase(it);
 		it = resultSchedule.begin();
@@ -65,4 +74,14 @@ void NEH::checkNewMakespan(int &tmpMakespan, std::vector<Job> &tmpResultSchedule
 		tmpResultSchedule = resultSchedule;
 		tmpMakespan = makespan;
 	}
+}
+
+int NEH::getMakespan() const
+{
+	return makespan;
+}
+
+std::vector<Job> NEH::getResultSchedule() const
+{
+	return resultSchedule;
 }
