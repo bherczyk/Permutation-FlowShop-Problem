@@ -14,7 +14,7 @@ NEH::~NEH()
 
 NEH::NEH(const Algorithm* a)
 {
-	NEH *other = (NEH*)a;
+	const NEH *other = static_cast<const NEH*>(a);
 	this->numberOfJobs = other->numberOfJobs;
 	this->numberOfMachines = other->numberOfMachines;
 	this->jobs = other->jobs;

@@ -7,7 +7,7 @@
 
 SA::SA()
 {
-	srand(time(NULL));
+	srand(time(0));
 }
 
 
@@ -23,44 +23,47 @@ void SA::computeResult()
 	double temp = INIT_TEMP;
 	initialFirstSolution();
 
-	std::vector<Job> actualResultSchedule = resultSchedule;
-	int actualMakespan = makespan;
-	
-	for (int iters = 0, itersForFixedTemp = 0, itersWithoutImprovement = 0; iters < MAX_ITER; iters++, itersForFixedTemp++, itersWithoutImprovement++)
-	{
-		
-		std::vector<Job> newResultSchedule = insert(actualResultSchedule);
-		int newMakespan = computeMakespan(newResultSchedule);
-		if (newMakespan < makespan)
-		{
-			makespan = newMakespan;
-			resultSchedule = newResultSchedule;
-			actualMakespan = newMakespan;
-			actualResultSchedule = newResultSchedule;
-			itersWithoutImprovement = 0;
-		}
-		else
-		{
-			double randomNumber = (double)rand() / (double)RAND_MAX;
-			double fuction = exp(-(newMakespan - makespan) / temp);
-			if (randomNumber < fuction)
-			{
-				actualMakespan = newMakespan;
-				actualResultSchedule = newResultSchedule;
-			}
-		}
 
-		if (itersForFixedTemp == MAX_ITER_FOR_FIXED_TEMP)
+	
+	for (int k = 0; k < 100; k++)
+	{
+		std::vector<Job> actualResultSchedule = resultSchedule;
+		temp = INIT_TEMP;
+		for (int iters = 0, itersForFixedTemp = 0, itersWithoutImprovement = 0; iters < MAX_ITER; itersForFixedTemp++, itersWithoutImprovement++)
 		{
-			temp *= ALPHA;
-			itersForFixedTemp = 0;
+			std::vector<Job> newResultSchedule = insert(actualResultSchedule);
+			int newMakespan = computeMakespan(newResultSchedule);
+			if (newMakespan < makespan)
+			{
+				makespan = newMakespan;
+				resultSchedule = newResultSchedule;
+				actualResultSchedule = newResultSchedule;
+				itersWithoutImprovement = 0;
+			}
+			else
+			{
+				double randomNumber = (double)rand() / (double)RAND_MAX;
+				double acceptFunction = exp(-(newMakespan - makespan) / temp);
+				if (randomNumber < acceptFunction)
+				{
+					actualResultSchedule = newResultSchedule;
+				}
+			}
+			
+			if (itersForFixedTemp == MAX_ITER_FOR_FIXED_TEMP)
+			{
+				temp *= ALPHA;
+				iters++;
+				itersForFixedTemp = 0;
+
+			}
+			if (itersWithoutImprovement == MAX_ITERS_WITHOUT_IMPROVEMENT)
+			{
+				temp = INIT_TEMP;
+				itersWithoutImprovement = 0;
+			}
+
 		}
-		if (itersWithoutImprovement == MAX_ITERS_WITHOUT_IMPROVEMENT)
-		{
-			temp = INIT_TEMP;
-			itersWithoutImprovement = 0;
-		}
-		
 	}
 }
 
@@ -70,7 +73,7 @@ void SA::initialFirstSolution()
 	nehAlgorithm->computeResult();
 
 	resultSchedule = nehAlgorithm->getResultSchedule();
-    makespan = nehAlgorithm->getMakespan();
+	makespan = computeMakespan(resultSchedule);
 }
 
 
@@ -78,13 +81,13 @@ void SA::initialFirstSolution()
 std::vector<Job> SA::insert(const std::vector<Job>& actualResultSchedule)
 {
 	std::vector<Job> tmpResultSchedule = actualResultSchedule;
-	int a = rand() % numberOfJobs;
+	int a = rand() % (numberOfJobs);
 	int b = 0;
 	while ((b = rand() % numberOfJobs) == a);
 	Job tmp = tmpResultSchedule[a];
-	tmpResultSchedule[a] = tmpResultSchedule[b];
-	tmpResultSchedule[b] = tmp;
-
+	auto it = tmpResultSchedule.begin();
+	tmpResultSchedule.erase(it + a);
+	tmpResultSchedule.insert(it + b, tmp);
 	return tmpResultSchedule;
 }
 

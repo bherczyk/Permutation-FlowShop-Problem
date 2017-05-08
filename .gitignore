@@ -2,6 +2,7 @@
 /FlowShopProblem/*.sfd
 /FlowShopProblem/Debug/
 /FlowShopProblem/FlowShopProblem/Debug/
+/FlowShopProblem/FlowShopProblem/Release/
 Taillard.zip
 
 ## Ignore Visual Studio temporary files, build results, and
