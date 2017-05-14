@@ -3,7 +3,7 @@ FlowShopProblem.cpp(21): warning C4018: "<": niezgodność typu ze znakiem/bez z
   Trwa generowanie kodu
   29 of 560 functions ( 5.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    16 functions had inline decision re-evaluated but remain unchanged
+    11 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   FlowShopProblem.vcxproj -> F:\Moje Bartek\Studia\VI semestr\Zarządzanie w systemach i sieciach komputerowych\Programs\FlowShopProblem\Release\FlowShopProblem.exe
   FlowShopProblem.vcxproj -> F:\Moje Bartek\Studia\VI semestr\Zarządzanie w systemach i sieciach komputerowych\Programs\FlowShopProblem\Release\FlowShopProblem.pdb (Full PDB)
