@@ -85,6 +85,7 @@
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
     <ClInclude Include="Job.h" />
+    <ClInclude Include="MTSA.h" />
     <ClInclude Include="NEH.h" />
     <ClInclude Include="SA.h" />
     <ClInclude Include="stdafx.h" />
@@ -94,6 +95,7 @@
     <ClCompile Include="Algorithm.cpp" />
     <ClCompile Include="FlowShopProblem.cpp" />
     <ClCompile Include="Job.cpp" />
+    <ClCompile Include="MTSA.cpp" />
     <ClCompile Include="NEH.cpp" />
     <ClCompile Include="SA.cpp" />
     <ClCompile Include="stdafx.cpp">

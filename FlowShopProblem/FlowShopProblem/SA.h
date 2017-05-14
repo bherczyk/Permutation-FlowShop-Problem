@@ -6,7 +6,7 @@
 #include <memory>
 class SA : public Algorithm
 {
-private:
+protected:
 	static const int INIT_TEMP = 60;
 	static constexpr double ALPHA = 0.98;
 	static const int MAX_ITERS_WITHOUT_IMPROVEMENT = 10;
