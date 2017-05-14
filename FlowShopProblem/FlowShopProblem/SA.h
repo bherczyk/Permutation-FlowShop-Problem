@@ -6,6 +6,8 @@
 #include <memory>
 class SA : public Algorithm
 {
+private:
+	std::vector<Job> insert(const std::vector<Job> &actualResultSchedule);
 protected:
 	static const int INIT_TEMP = 60;
 	static constexpr double ALPHA = 0.98;
@@ -14,7 +16,7 @@ protected:
 	std::unique_ptr<NEH> nehAlgorithm;
 
 	void initialFirstSolution();
-	std::vector<Job> insert(const std::vector<Job> &actualResultSchedule);
+	
 
 	int computeMakespan(const std::vector<Job> &resultSchedule);
 	

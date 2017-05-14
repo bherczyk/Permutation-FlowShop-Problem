@@ -9,22 +9,19 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	using namespace std;
-	array<string,2> files  {
+	array<string,1> files  {
 
-		"../../Taillard/T50_10/T50_10.7.txt",
-		"../../Taillard/T50_10/T50_10.8.txt",
-
-
+		"../../Taillard/T20_5/T20_5.7.txt",
 
 	};
 
 
-	for (int i = 0; i < files.size(); i++)
+	for (unsigned int i = 0; i < files.size(); i++)
 	{
 		cout << "-----------------------------------------------------------------------\n";
 		cout << files.at(i) << "\n";
 		cout << "SA\n";
-		SA a;
+		MTSA a;
 		a.initData(files.at(i));
 		a.computeResult();
 		a.showResult();
@@ -38,17 +35,6 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	}
-	SA a;
-	a.initData("../../Taillard/T50_20/T50_20.1.txt");
-	//a.showData();
-	a.computeResult();
-	a.showResult();
-
-	NEH c;
-
-	c.initData("../../Taillard/T50_20/T50_20.1.txt");
-	c.computeResult();
-	c.showResult();
 
 	std::cin.clear();
 	std::cin.ignore();
