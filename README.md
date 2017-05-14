@@ -38,3 +38,10 @@ arrangement, i.e. the one with the shortest possible total job execution makespa
 
 
 **Computational complexity - O(n(n+1)/2-1)**
+
+
+### Simulated Annealing algorithm
+Description coming soon
+
+### Multi-threaded Simulated Annealing algorithm
+Description coming soon
