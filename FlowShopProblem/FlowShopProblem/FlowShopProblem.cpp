@@ -37,17 +37,17 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 	}
-	//SA a;
-	//a.initData("../../Taillard/T50_20/T50_20.1.txt");
-	////a.showData();
-	//a.computeResult();
-	//a.showResult();
+	SA a;
+	a.initData("../../Taillard/T50_20/T50_20.1.txt");
+	//a.showData();
+	a.computeResult();
+	a.showResult();
 
-	//NEH c;
+	NEH c;
 
-	//c.initData("../../Taillard/T50_20/T50_20.1.txt");
-	//c.computeResult();
-	//c.showResult();
+	c.initData("../../Taillard/T50_20/T50_20.1.txt");
+	c.computeResult();
+	c.showResult();
 
 	std::cin.clear();
 	std::cin.ignore();
