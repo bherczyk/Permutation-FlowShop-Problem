@@ -8,46 +8,13 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	using namespace std;
-	array<string,40> files  {"../../Taillard/T20_5/T20_5.1.txt",
-		"../../Taillard/T20_5/T20_5.2.txt",
-		"../../Taillard/T20_5/T20_5.3.txt",
-		"../../Taillard/T20_5/T20_5.4.txt",
-		"../../Taillard/T20_5/T20_5.5.txt",
-		"../../Taillard/T20_5/T20_5.6.txt",
-		"../../Taillard/T20_5/T20_5.7.txt",
-		"../../Taillard/T20_5/T20_5.8.txt",
-		"../../Taillard/T20_5/T20_5.9.txt",
-		"../../Taillard/T20_5/T20_5.10.txt",
-		"../../Taillard/T20_10/T20_10.1.txt",
-		"../../Taillard/T20_10/T20_10.2.txt",
-		"../../Taillard/T20_10/T20_10.3.txt",
-		"../../Taillard/T20_10/T20_10.4.txt",
-		"../../Taillard/T20_10/T20_10.5.txt",
-		"../../Taillard/T20_10/T20_10.6.txt",
-		"../../Taillard/T20_10/T20_10.7.txt",
-		"../../Taillard/T20_10/T20_10.8.txt",
-		"../../Taillard/T20_10/T20_10.9.txt",
-		"../../Taillard/T20_10/T20_10.10.txt",
-		"../../Taillard/T20_20/T20_20.1.txt",
-		"../../Taillard/T20_20/T20_20.2.txt",
-		"../../Taillard/T20_20/T20_20.3.txt",
-		"../../Taillard/T20_20/T20_20.4.txt",
-		"../../Taillard/T20_20/T20_20.5.txt",
-		"../../Taillard/T20_20/T20_20.6.txt",
-		"../../Taillard/T20_20/T20_20.7.txt",
-		"../../Taillard/T20_20/T20_20.8.txt",
-		"../../Taillard/T20_20/T20_20.9.txt",
-		"../../Taillard/T20_20/T20_20.10.txt",
-		"../../Taillard/T50_5/T50_5.1.txt",
-		"../../Taillard/T50_5/T50_5.2.txt",
-		"../../Taillard/T50_5/T50_5.3.txt",
-		"../../Taillard/T50_5/T50_5.4.txt",
-		"../../Taillard/T50_5/T50_5.5.txt",
-		"../../Taillard/T50_5/T50_5.6.txt",
-		"../../Taillard/T50_5/T50_5.7.txt",
-		"../../Taillard/T50_5/T50_5.8.txt",
-		"../../Taillard/T50_5/T50_5.9.txt",
-		"../../Taillard/T50_5/T50_5.10.txt",
+	array<string,2> files  {
+
+		"../../Taillard/T50_10/T50_10.7.txt",
+		"../../Taillard/T50_10/T50_10.8.txt",
+
+
+
 	};
 
 
